@@ -46,18 +46,27 @@
             this.txtMacR = new System.Windows.Forms.TextBox();
             this.txtPortR = new System.Windows.Forms.TextBox();
             this.btnRecv = new System.Windows.Forms.Button();
-            this.txtResult = new System.Windows.Forms.TextBox();
+            this.txtResR = new System.Windows.Forms.TextBox();
             this.txtFrasize = new System.Windows.Forms.TextBox();
             this.lblFrasize = new System.Windows.Forms.Label();
             this.nudPayload = new System.Windows.Forms.NumericUpDown();
+            this.txtResS = new System.Windows.Forms.TextBox();
+            this.chkMacL = new System.Windows.Forms.CheckBox();
+            this.chkIPaL = new System.Windows.Forms.CheckBox();
+            this.chkPortL = new System.Windows.Forms.CheckBox();
+            this.btnIFset = new System.Windows.Forms.Button();
+            this.lblUnit = new System.Windows.Forms.Label();
+            this.cbxUnit = new System.Windows.Forms.ComboBox();
+            this.lblCalc = new System.Windows.Forms.Label();
+            this.cbxCalc = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudPayload)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(497, 190);
+            this.btnSend.Location = new System.Drawing.Point(682, 252);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(115, 23);
+            this.btnSend.Size = new System.Drawing.Size(90, 23);
             this.btnSend.TabIndex = 0;
             this.btnSend.Text = "送信テスト開始";
             this.btnSend.UseVisualStyleBackColor = true;
@@ -70,7 +79,7 @@
             this.cbxNic.FormattingEnabled = true;
             this.cbxNic.Location = new System.Drawing.Point(74, 6);
             this.cbxNic.Name = "cbxNic";
-            this.cbxNic.Size = new System.Drawing.Size(538, 20);
+            this.cbxNic.Size = new System.Drawing.Size(698, 20);
             this.cbxNic.TabIndex = 1;
             // 
             // lblNic
@@ -128,15 +137,15 @@
             // lblInv
             // 
             this.lblInv.AutoSize = true;
-            this.lblInv.Location = new System.Drawing.Point(16, 169);
+            this.lblInv.Location = new System.Drawing.Point(12, 169);
             this.lblInv.Name = "lblInv";
-            this.lblInv.Size = new System.Drawing.Size(85, 12);
+            this.lblInv.Size = new System.Drawing.Size(83, 12);
             this.lblInv.TabIndex = 2;
-            this.lblInv.Text = "テスト時間 (sec)";
+            this.lblInv.Text = "計測時間 (sec)";
             // 
             // txtInv
             // 
-            this.txtInv.Location = new System.Drawing.Point(116, 166);
+            this.txtInv.Location = new System.Drawing.Point(101, 166);
             this.txtInv.Name = "txtInv";
             this.txtInv.Size = new System.Drawing.Size(95, 19);
             this.txtInv.TabIndex = 4;
@@ -170,7 +179,7 @@
             // 
             // txtIPaR
             // 
-            this.txtIPaR.Location = new System.Drawing.Point(235, 92);
+            this.txtIPaR.Location = new System.Drawing.Point(254, 92);
             this.txtIPaR.Name = "txtIPaR";
             this.txtIPaR.Size = new System.Drawing.Size(119, 19);
             this.txtIPaR.TabIndex = 3;
@@ -179,7 +188,7 @@
             // lblR
             // 
             this.lblR.AutoSize = true;
-            this.lblR.Location = new System.Drawing.Point(233, 39);
+            this.lblR.Location = new System.Drawing.Point(252, 39);
             this.lblR.Name = "lblR";
             this.lblR.Size = new System.Drawing.Size(63, 12);
             this.lblR.TabIndex = 2;
@@ -187,7 +196,7 @@
             // 
             // txtMacR
             // 
-            this.txtMacR.Location = new System.Drawing.Point(235, 65);
+            this.txtMacR.Location = new System.Drawing.Point(254, 65);
             this.txtMacR.Name = "txtMacR";
             this.txtMacR.Size = new System.Drawing.Size(119, 19);
             this.txtMacR.TabIndex = 3;
@@ -195,7 +204,7 @@
             // 
             // txtPortR
             // 
-            this.txtPortR.Location = new System.Drawing.Point(235, 121);
+            this.txtPortR.Location = new System.Drawing.Point(254, 121);
             this.txtPortR.Name = "txtPortR";
             this.txtPortR.Size = new System.Drawing.Size(119, 19);
             this.txtPortR.TabIndex = 3;
@@ -203,22 +212,22 @@
             // 
             // btnRecv
             // 
-            this.btnRecv.Location = new System.Drawing.Point(376, 190);
+            this.btnRecv.Location = new System.Drawing.Point(520, 252);
             this.btnRecv.Name = "btnRecv";
-            this.btnRecv.Size = new System.Drawing.Size(115, 23);
+            this.btnRecv.Size = new System.Drawing.Size(90, 23);
             this.btnRecv.TabIndex = 0;
             this.btnRecv.Text = "受信テスト開始";
             this.btnRecv.UseVisualStyleBackColor = true;
             this.btnRecv.Click += new System.EventHandler(this.btnRecv_Click);
             // 
-            // txtResult
+            // txtResR
             // 
-            this.txtResult.Location = new System.Drawing.Point(376, 39);
-            this.txtResult.Multiline = true;
-            this.txtResult.Name = "txtResult";
-            this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResult.Size = new System.Drawing.Size(236, 142);
-            this.txtResult.TabIndex = 5;
+            this.txtResR.Location = new System.Drawing.Point(426, 39);
+            this.txtResR.Multiline = true;
+            this.txtResR.Name = "txtResR";
+            this.txtResR.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtResR.Size = new System.Drawing.Size(184, 207);
+            this.txtResR.TabIndex = 5;
             // 
             // txtFrasize
             // 
@@ -239,7 +248,7 @@
             // 
             // nudPayload
             // 
-            this.nudPayload.Location = new System.Drawing.Point(116, 194);
+            this.nudPayload.Location = new System.Drawing.Point(101, 194);
             this.nudPayload.Maximum = new decimal(new int[] {
             1472,
             0,
@@ -255,13 +264,110 @@
             0});
             this.nudPayload.ValueChanged += new System.EventHandler(this.nudPayload_ValueChanged);
             // 
+            // txtResS
+            // 
+            this.txtResS.Location = new System.Drawing.Point(616, 39);
+            this.txtResS.Multiline = true;
+            this.txtResS.Name = "txtResS";
+            this.txtResS.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtResS.Size = new System.Drawing.Size(156, 207);
+            this.txtResS.TabIndex = 5;
+            // 
+            // chkMacL
+            // 
+            this.chkMacL.AutoSize = true;
+            this.chkMacL.Checked = true;
+            this.chkMacL.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMacL.Location = new System.Drawing.Point(217, 68);
+            this.chkMacL.Name = "chkMacL";
+            this.chkMacL.Size = new System.Drawing.Size(15, 14);
+            this.chkMacL.TabIndex = 7;
+            this.chkMacL.UseVisualStyleBackColor = true;
+            // 
+            // chkIPaL
+            // 
+            this.chkIPaL.AutoSize = true;
+            this.chkIPaL.Location = new System.Drawing.Point(217, 95);
+            this.chkIPaL.Name = "chkIPaL";
+            this.chkIPaL.Size = new System.Drawing.Size(15, 14);
+            this.chkIPaL.TabIndex = 7;
+            this.chkIPaL.UseVisualStyleBackColor = true;
+            // 
+            // chkPortL
+            // 
+            this.chkPortL.AutoSize = true;
+            this.chkPortL.Location = new System.Drawing.Point(217, 124);
+            this.chkPortL.Name = "chkPortL";
+            this.chkPortL.Size = new System.Drawing.Size(15, 14);
+            this.chkPortL.TabIndex = 7;
+            this.chkPortL.UseVisualStyleBackColor = true;
+            // 
+            // btnIFset
+            // 
+            this.btnIFset.Location = new System.Drawing.Point(194, 34);
+            this.btnIFset.Name = "btnIFset";
+            this.btnIFset.Size = new System.Drawing.Size(17, 23);
+            this.btnIFset.TabIndex = 8;
+            this.btnIFset.Text = "↓";
+            this.btnIFset.UseVisualStyleBackColor = true;
+            this.btnIFset.Click += new System.EventHandler(this.btnIFset_Click);
+            // 
+            // lblUnit
+            // 
+            this.lblUnit.AutoSize = true;
+            this.lblUnit.Location = new System.Drawing.Point(16, 222);
+            this.lblUnit.Name = "lblUnit";
+            this.lblUnit.Size = new System.Drawing.Size(71, 12);
+            this.lblUnit.TabIndex = 2;
+            this.lblUnit.Text = "計測bps単位";
+            // 
+            // cbxUnit
+            // 
+            this.cbxUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxUnit.FormattingEnabled = true;
+            this.cbxUnit.Items.AddRange(new object[] {
+            "1000bps=1kbps, 1000kbps=1Mbps  (Wireshark)",
+            "1024bps=1kbps, 1024kbps=1Mbps"});
+            this.cbxUnit.Location = new System.Drawing.Point(101, 219);
+            this.cbxUnit.Name = "cbxUnit";
+            this.cbxUnit.Size = new System.Drawing.Size(272, 20);
+            this.cbxUnit.TabIndex = 9;
+            // 
+            // lblCalc
+            // 
+            this.lblCalc.AutoSize = true;
+            this.lblCalc.Location = new System.Drawing.Point(16, 252);
+            this.lblCalc.Name = "lblCalc";
+            this.lblCalc.Size = new System.Drawing.Size(53, 12);
+            this.lblCalc.TabIndex = 2;
+            this.lblCalc.Text = "計測箇所";
+            // 
+            // cbxCalc
+            // 
+            this.cbxCalc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCalc.FormattingEnabled = true;
+            this.cbxCalc.Items.AddRange(new object[] {
+            "framesize(パケット長) で計測する (Wireshark)",
+            "Payload(データ長) で計測する"});
+            this.cbxCalc.Location = new System.Drawing.Point(101, 252);
+            this.cbxCalc.Name = "cbxCalc";
+            this.cbxCalc.Size = new System.Drawing.Size(272, 20);
+            this.cbxCalc.TabIndex = 9;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 224);
+            this.ClientSize = new System.Drawing.Size(784, 281);
+            this.Controls.Add(this.cbxCalc);
+            this.Controls.Add(this.cbxUnit);
+            this.Controls.Add(this.btnIFset);
+            this.Controls.Add(this.chkPortL);
+            this.Controls.Add(this.chkIPaL);
+            this.Controls.Add(this.chkMacL);
             this.Controls.Add(this.nudPayload);
-            this.Controls.Add(this.txtResult);
+            this.Controls.Add(this.txtResS);
+            this.Controls.Add(this.txtResR);
             this.Controls.Add(this.txtInv);
             this.Controls.Add(this.txtFrasize);
             this.Controls.Add(this.txtPortR);
@@ -271,6 +377,8 @@
             this.Controls.Add(this.lblInv);
             this.Controls.Add(this.lblPort);
             this.Controls.Add(this.lblFrasize);
+            this.Controls.Add(this.lblCalc);
+            this.Controls.Add(this.lblUnit);
             this.Controls.Add(this.lblPayload);
             this.Controls.Add(this.lblR);
             this.Controls.Add(this.lblL);
@@ -311,10 +419,19 @@
     private System.Windows.Forms.TextBox txtMacR;
     private System.Windows.Forms.TextBox txtPortR;
     private System.Windows.Forms.Button btnRecv;
-    private System.Windows.Forms.TextBox txtResult;
+    private System.Windows.Forms.TextBox txtResR;
     private System.Windows.Forms.TextBox txtFrasize;
     private System.Windows.Forms.Label lblFrasize;
     private System.Windows.Forms.NumericUpDown nudPayload;
+    private System.Windows.Forms.TextBox txtResS;
+    private System.Windows.Forms.CheckBox chkMacL;
+    private System.Windows.Forms.CheckBox chkIPaL;
+    private System.Windows.Forms.CheckBox chkPortL;
+    private System.Windows.Forms.Button btnIFset;
+    private System.Windows.Forms.Label lblUnit;
+    private System.Windows.Forms.ComboBox cbxUnit;
+    private System.Windows.Forms.Label lblCalc;
+    private System.Windows.Forms.ComboBox cbxCalc;
   }
 }
 
