@@ -222,6 +222,8 @@ namespace namapo
 
             /*--------------------------------------------------------*/
 
+
+
 #if true
             int calc_sec = Convert.ToInt32(txtInv.Text);
             int mbps_conv = (cbxUnit.SelectedIndex == 0) ? MBPS_CONV1 : MBPS_CONV2;
@@ -244,7 +246,7 @@ namespace namapo
             {
                 for (;;)
                 {
-                    dev.SendPacket(fbyt);
+                    dev.SendPacket(fbyt, fbyt.Length);
                     rw_bytes[rw_cnt] += (ulong)n;
                     cts.Token.ThrowIfCancellationRequested();   /* キャンセル発行確認 */
                 }
@@ -290,50 +292,43 @@ namespace namapo
             }
 #else
 
-            /* SharpPcapデバイスオープン */
-            Debug.WriteLine("SelectedIndex : " + cbxNic.SelectedIndex);
-            LibPcapLiveDevice dev = LibPcapLiveDeviceList.Instance[cbxNic.SelectedIndex];
-            dev.Open();
+            ///* SharpPcapデバイスオープン */
+            //Debug.WriteLine("SelectedIndex : " + cbxNic.SelectedIndex);
+            //LibPcapLiveDevice dev = LibPcapLiveDeviceList.Instance[cbxNic.SelectedIndex];
+            //dev.Open();
+            //dev.NonBlockingMode = true;
+
+            //for (int x = 0; x < inv_ms; x++)
+            //{
+            //    dev.SendPacket(fbyt, fbyt.Length);
+            //}
+
+            //dev.Close();
+
+            Array.Resize(ref fbyt, 65500);
+
+
+            //UdpClientオブジェクトを作成する
+            System.Net.Sockets.UdpClient udp =
+                new System.Net.Sockets.UdpClient(new IPEndPoint(IPAddress.Parse("172.16.0.100"), 60000));
+
+            udp.Connect(IPAddress.Parse(txtIPaR.Text), Convert.ToInt32(txtPortR.Text));
 
             for (int x = 0; x < inv_ms; x++)
             {
-                dev.SendPacket(fbyt);
+                udp.Send(fbyt, fbyt.Length);
+
             }
 
-            dev.Close();
+            //UdpClientを閉じる
+            udp.Close();
+
 #endif
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < LibPcapLiveDeviceList.Instance.Count; i++)
-            {
-                LibPcapLiveDevice dev = LibPcapLiveDeviceList.Instance[i];
-
-                cbxNic.Items.Add(string.Format("{0}: {1} ({2}) - {3}",
-                  i, dev.Interface.MacAddress, dev.Interface.Description, dev.Interface.FriendlyName));
-            }
-            cbxNic.SelectedIndex = 0;
-
-            /* デバイス列挙 */
-            foreach (LibPcapLiveDevice dev in LibPcapLiveDeviceList.Instance)
-            {
-                Debug.WriteLine("FriendlyName : " + dev.Interface.FriendlyName);
-                Debug.WriteLine("Name         : " + dev.Interface.Name);
-                Debug.WriteLine("MacAddress   : " + dev.Interface.MacAddress);
-                Debug.WriteLine("Flags        : " + dev.Interface.Flags);
-
-                foreach (PcapAddress addr in dev.Interface.Addresses)
-                {
-                    Debug.WriteLine("Addr         :" + addr.Addr);
-                    Debug.WriteLine("Netmask      :" + addr.Netmask);
-                    Debug.WriteLine("Broadaddr    :" + addr.Broadaddr);
-                    Debug.WriteLine("Dstaddr      :" + addr.Dstaddr);
-                }
-
-                Debug.WriteLine("Description  : " + dev.Interface.Description);
-                Debug.WriteLine("");
-            }
+            btnReload.PerformClick();
 
             cbxUnit.SelectedIndex = 0;
             cbxCalc.SelectedIndex = 0;
@@ -406,7 +401,7 @@ namespace namapo
             Debug.WriteLine("SelectedIndex : " + cbxNic.SelectedIndex);
             LibPcapLiveDevice dev = LibPcapLiveDeviceList.Instance[cbxNic.SelectedIndex];
             dev.OnPacketArrival += OnPacketArrival;
-            dev.Open();
+            dev.Open(DeviceMode.Promiscuous);
 
             /* フィルタ設定 */
             // 参考: https://www.winpcap.org/docs/docs_40_2/html/group__language.html
@@ -463,7 +458,7 @@ namespace namapo
             dev.StopCapture();
             tmMain.Stop();
 
-            Debug.WriteLine(dev.Statistics.ToString());
+            //Debug.WriteLine(dev.Statistics.ToString());
 
             TimeSpan ts = dtEnd - dtStart;
             txtResR.Text += string.Format(@"
@@ -491,6 +486,39 @@ namespace namapo
 
             txtMacL.Text = dev.Interface.MacAddress.ToString();
             txtIPaL.Text = dev.Interface.Addresses[0].Addr.ToString();
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            cbxNic.Items.Clear();
+            for (int i = 0; i < LibPcapLiveDeviceList.Instance.Count; i++)
+            {
+                LibPcapLiveDevice dev = LibPcapLiveDeviceList.Instance[i];
+
+                cbxNic.Items.Add(string.Format("{0}: {1} ({2}) - {3}",
+                  i, dev.Interface.MacAddress, dev.Interface.Description, dev.Interface.FriendlyName));
+            }
+            cbxNic.SelectedIndex = 0;
+
+            /* デバイス列挙 */
+            foreach (LibPcapLiveDevice dev in LibPcapLiveDeviceList.Instance)
+            {
+                Debug.WriteLine("FriendlyName : " + dev.Interface.FriendlyName);
+                Debug.WriteLine("Name         : " + dev.Interface.Name);
+                Debug.WriteLine("MacAddress   : " + dev.Interface.MacAddress);
+                Debug.WriteLine("Flags        : " + dev.Interface.Flags);
+
+                foreach (PcapAddress addr in dev.Interface.Addresses)
+                {
+                    Debug.WriteLine("Addr         :" + addr.Addr);
+                    Debug.WriteLine("Netmask      :" + addr.Netmask);
+                    Debug.WriteLine("Broadaddr    :" + addr.Broadaddr);
+                    Debug.WriteLine("Dstaddr      :" + addr.Dstaddr);
+                }
+
+                Debug.WriteLine("Description  : " + dev.Interface.Description);
+                Debug.WriteLine("");
+            }
         }
 
     }

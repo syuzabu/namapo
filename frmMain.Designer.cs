@@ -59,6 +59,7 @@
             this.cbxUnit = new System.Windows.Forms.ComboBox();
             this.lblCalc = new System.Windows.Forms.Label();
             this.cbxCalc = new System.Windows.Forms.ComboBox();
+            this.btnReload = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudPayload)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +80,7 @@
             this.cbxNic.FormattingEnabled = true;
             this.cbxNic.Location = new System.Drawing.Point(74, 6);
             this.cbxNic.Name = "cbxNic";
-            this.cbxNic.Size = new System.Drawing.Size(698, 20);
+            this.cbxNic.Size = new System.Drawing.Size(627, 20);
             this.cbxNic.TabIndex = 1;
             // 
             // lblNic
@@ -166,7 +167,7 @@
             this.txtPortL.Name = "txtPortL";
             this.txtPortL.Size = new System.Drawing.Size(119, 19);
             this.txtPortL.TabIndex = 3;
-            this.txtPortL.Text = "0";
+            this.txtPortL.Text = "11111";
             // 
             // lblL
             // 
@@ -200,7 +201,7 @@
             this.txtMacR.Name = "txtMacR";
             this.txtMacR.Size = new System.Drawing.Size(119, 19);
             this.txtMacR.TabIndex = 3;
-            this.txtMacR.Text = "ff-ff-ff-ff-ff-ff";
+            this.txtMacR.Text = "12-34-56-78-70-02";
             // 
             // txtPortR
             // 
@@ -354,11 +355,22 @@
             this.cbxCalc.Size = new System.Drawing.Size(272, 20);
             this.cbxCalc.TabIndex = 9;
             // 
+            // btnReload
+            // 
+            this.btnReload.Location = new System.Drawing.Point(707, 5);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(65, 23);
+            this.btnReload.TabIndex = 10;
+            this.btnReload.Text = "更新";
+            this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 281);
+            this.Controls.Add(this.btnReload);
             this.Controls.Add(this.cbxCalc);
             this.Controls.Add(this.cbxUnit);
             this.Controls.Add(this.btnIFset);
@@ -432,6 +444,7 @@
     private System.Windows.Forms.ComboBox cbxUnit;
     private System.Windows.Forms.Label lblCalc;
     private System.Windows.Forms.ComboBox cbxCalc;
+    private System.Windows.Forms.Button btnReload;
   }
 }
 
