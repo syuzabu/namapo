@@ -60,12 +60,14 @@
             this.lblCalc = new System.Windows.Forms.Label();
             this.cbxCalc = new System.Windows.Forms.ComboBox();
             this.btnReload = new System.Windows.Forms.Button();
+            this.chkUseWS = new System.Windows.Forms.CheckBox();
+            this.chkUpdateARP = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudPayload)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(682, 252);
+            this.btnSend.Location = new System.Drawing.Point(682, 307);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(90, 23);
             this.btnSend.TabIndex = 0;
@@ -131,9 +133,9 @@
             this.lblPayload.AutoSize = true;
             this.lblPayload.Location = new System.Drawing.Point(16, 196);
             this.lblPayload.Name = "lblPayload";
-            this.lblPayload.Size = new System.Drawing.Size(79, 12);
+            this.lblPayload.Size = new System.Drawing.Size(67, 12);
             this.lblPayload.TabIndex = 2;
-            this.lblPayload.Text = "Payload (byte)";
+            this.lblPayload.Text = "データ (byte)";
             // 
             // lblInv
             // 
@@ -213,7 +215,7 @@
             // 
             // btnRecv
             // 
-            this.btnRecv.Location = new System.Drawing.Point(520, 252);
+            this.btnRecv.Location = new System.Drawing.Point(520, 307);
             this.btnRecv.Name = "btnRecv";
             this.btnRecv.Size = new System.Drawing.Size(90, 23);
             this.btnRecv.TabIndex = 0;
@@ -227,7 +229,7 @@
             this.txtResR.Multiline = true;
             this.txtResR.Name = "txtResR";
             this.txtResR.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResR.Size = new System.Drawing.Size(184, 207);
+            this.txtResR.Size = new System.Drawing.Size(184, 262);
             this.txtResR.TabIndex = 5;
             // 
             // txtFrasize
@@ -271,14 +273,12 @@
             this.txtResS.Multiline = true;
             this.txtResS.Name = "txtResS";
             this.txtResS.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResS.Size = new System.Drawing.Size(156, 207);
+            this.txtResS.Size = new System.Drawing.Size(156, 262);
             this.txtResS.TabIndex = 5;
             // 
             // chkMacL
             // 
             this.chkMacL.AutoSize = true;
-            this.chkMacL.Checked = true;
-            this.chkMacL.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkMacL.Location = new System.Drawing.Point(217, 68);
             this.chkMacL.Name = "chkMacL";
             this.chkMacL.Size = new System.Drawing.Size(15, 14);
@@ -365,11 +365,37 @@
             this.btnReload.UseVisualStyleBackColor = true;
             this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
+            // chkUseWS
+            // 
+            this.chkUseWS.AutoSize = true;
+            this.chkUseWS.Location = new System.Drawing.Point(18, 289);
+            this.chkUseWS.Name = "chkUseWS";
+            this.chkUseWS.Size = new System.Drawing.Size(385, 16);
+            this.chkUseWS.TabIndex = 11;
+            this.chkUseWS.Text = "データの送信を最速で行う。(WinSock使用、I/F割当アドレスが使用される。)";
+            this.chkUseWS.UseVisualStyleBackColor = true;
+            this.chkUseWS.CheckedChanged += new System.EventHandler(this.chkUseWS_CheckedChanged);
+            // 
+            // chkUpdateARP
+            // 
+            this.chkUpdateARP.AutoSize = true;
+            this.chkUpdateARP.Checked = true;
+            this.chkUpdateARP.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkUpdateARP.Location = new System.Drawing.Point(34, 311);
+            this.chkUpdateARP.Name = "chkUpdateARP";
+            this.chkUpdateARP.Size = new System.Drawing.Size(396, 16);
+            this.chkUpdateARP.TabIndex = 11;
+            this.chkUpdateARP.Text = "リモートIP/MACアドレスをARPキャッシュに静的登録する。(管理者権限が必要)";
+            this.chkUpdateARP.UseVisualStyleBackColor = true;
+            this.chkUpdateARP.CheckedChanged += new System.EventHandler(this.chkUseWS_CheckedChanged);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 281);
+            this.ClientSize = new System.Drawing.Size(784, 336);
+            this.Controls.Add(this.chkUpdateARP);
+            this.Controls.Add(this.chkUseWS);
             this.Controls.Add(this.btnReload);
             this.Controls.Add(this.cbxCalc);
             this.Controls.Add(this.cbxUnit);
@@ -445,6 +471,8 @@
     private System.Windows.Forms.Label lblCalc;
     private System.Windows.Forms.ComboBox cbxCalc;
     private System.Windows.Forms.Button btnReload;
+    private System.Windows.Forms.CheckBox chkUseWS;
+    private System.Windows.Forms.CheckBox chkUpdateARP;
   }
 }
 
